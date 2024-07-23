@@ -1,0 +1,120 @@
+:root{
+    --text-color: #333;
+    --text-bg-color: white;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+nav{
+    display: flex;
+    justify-content: center;
+}
+
+nav > dialog{
+    justify-self: center;
+    align-self: center;
+
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+nav > dialog > header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+nav > dialog > header > #closeDialog{
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    transition: 0.3s;
+    background: transparent;
+    border: none;
+}
+
+nav > dialog > form{
+    display: flex;
+    flex-direction: column;
+}
+
+nav > dialog > form > input{
+    padding: 0.2rem;
+    margin-top: 0.2rem;
+    border: 1px solid var(--text-color);
+    border-radius: 5px;
+}
+
+nav > dialog > form > select{
+    padding: 0.2rem;
+    margin-top: 0.2rem;
+    border: 1px solid var(--text-color);
+    border-radius: 5px;
+}
+
+nav > dialog > form > button{
+    padding: 0.2rem;
+    margin-top: 1rem;
+    background: var(--text-color);
+    color: var(--text-bg-color);
+    border: 1px solid var(--text-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+nav > #addBook {
+    padding: 0.5rem;
+    margin-top: 1rem;
+    background: var(--text-color);
+    color: var(--text-bg-color);
+    border: 1px solid var(--text-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+main{
+    margin: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: max(20px,2rem);
+}
+
+
+
+main > .book{
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 20rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+main > .book > :has( + :is(p,button)){
+    margin-top: 0.5rem;
+}
+
+main > .book > button{
+    padding: 0.3rem;
+    background: rgb(202, 40, 40);
+    color: var(--text-bg-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 1rem;
+    align-self: center;
+    width: 4rem;
+}
