@@ -68,9 +68,11 @@ function addBookToLibrary(book) {
         if (read.textContent === "Read: Yes") {
             read.textContent = "Read: No";
             isNotRead();
+            book.read = "No";
         } else {
             read.textContent = "Read: Yes";
             isRead();
+            book.read = "Yes";
         }
 
         var books = getBooksFromLocalStorage();
