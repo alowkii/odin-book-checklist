@@ -11,6 +11,16 @@ closeDialogBtn.addEventListener('click', () => {
     dialog.close();
 });
 
+//save local books
+function saveBooksToLocalStorage(books) {
+    localStorage.setItem('books', JSON.stringify(books));
+}
+
+//get local books
+function getBooksFromLocalStorage() {
+    return JSON.parse(localStorage.getItem('books')) || [];
+}
+
 var addBookBtn = document.querySelector('#addBookBtn');
 function addBookToLibrary(book) {
     var bookCard = document.createElement('div');
@@ -28,6 +38,10 @@ function addBookToLibrary(book) {
     deleteBtn.textContent = 'Remove';
     deleteBtn.addEventListener('click', () => {
         bookCard.remove();
+        
+        var books = getBooksFromLocalStorage();
+        books = books.filter(b => b.title !== book.title);
+        saveBooksToLocalStorage(books);
     });
 
     var readBtn = document.createElement('button');
@@ -58,6 +72,10 @@ function addBookToLibrary(book) {
             read.textContent = "Read: Yes";
             isRead();
         }
+
+        var books = getBooksFromLocalStorage();
+        books = books.map(b => b.title === book.title ? book : b);
+        saveBooksToLocalStorage(books);
     });
 
     bookCard.appendChild(title);
@@ -77,9 +95,20 @@ addBookBtn.addEventListener('click', () => {
         read: document.querySelector('#read').value
     }
     addBookToLibrary(book);
+
+    var books = getBooksFromLocalStorage();
+    books.push(book);
+    saveBooksToLocalStorage(books);
     dialog.close();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    var books = getBooksFromLocalStorage();
+    books.forEach(book => addBookToLibrary(book));
 });
 
 document.getElementById('dark-mode').addEventListener('change', function() {
     document.body.classList.toggle('dark-mode', this.checked);
 });
+
+
