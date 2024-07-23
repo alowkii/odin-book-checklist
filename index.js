@@ -79,3 +79,7 @@ addBookBtn.addEventListener('click', () => {
     addBookToLibrary(book);
     dialog.close();
 });
+
+document.getElementById('dark-mode').addEventListener('change', function() {
+    document.body.classList.toggle('dark-mode', this.checked);
+});
